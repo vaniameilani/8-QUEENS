@@ -11,12 +11,6 @@ Demikian seterusnya sampai ditemukan solusi. Jika solusi ditemukan maka tidak di
 
 Untuk program dari 8 Queens dengan DFS  :
 ```
-#include <stdio.h>
-#include <conio.h>
-#include <math.h>
-
-int a[30], count=0;
-
 int place (int pos){
 	int i;
 	for (i=1; i<pos; i++){
@@ -25,22 +19,10 @@ int place (int pos){
 	}
 	return 1;
 }
+```
+Fungsi ini untuk memeriksa apakah ada Queen yang lain, yang saling menyerang.
 
-void print (int n){
-	int i,j;
-	count ++;
-	printf ("\n\nSolution #%d:\n", count);
-	for (i=1; i<=n; i++){
-		for (j=1; j<=n; j++){
-			if (a[i]==j)
-				printf ("Q\t");
-			else
-				printf ("*\t");
-		}
-		printf ("\n");
-	}
-}
-
+```
 void queen (int n){
 	int k=1;	
 	a[k]=0;		
@@ -62,14 +44,15 @@ void queen (int n){
 	}
 }
 
-int main(){
+```
+Fungsi untuk meletakkan queen di kotak yang tepat agar tidak saling menyerang
+
+```
 //	int n;
 //	printf ("Enter the number of Queen : ");
 //	scanf ("%d", &n);
-	queen (8);
-	printf ("\nTotal Solution=%d", count);
-}
 ```
+Program diatas digunakan apabila ingin menggunakan jumlah Queen yang lain, selain n=8.
 
 #### PENJELASAN ####
 Mula mula, Queen pertama diletakkan di kolom pertama dan baris pertama. Kemudian, Queen-1 diperiksa di segala arah apakah ada Queen lainnya yang menyerang. Jika tidak ada, maka dilanjutkan dengan meletakkan Queen-2 di baris pertama dan kolom kedua. Kemudian, dicek kembali untuk Queen-2 apakah saling menyerang dengan Queen lainnya. Apabila terdapat penyerangan, maka Queen-2 turun ke baris kedua, dicek kembali terus menerus, hingga Queen-2 menemukan kotak yang tepat dimana tidak saling menyerang dengan Queens yang ada di papan catur tersebut. Proses tersebut berlangsung hingga Queen-8. 
